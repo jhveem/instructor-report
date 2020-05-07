@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+</head>
+<body>
+<div id="vue-app">
+  <div>{{test}}</div>
+</div>
+<script>
+  APP = new Vue({
+    el: "#vue-app",
+    mounted: async function() {
+      let url = "https://btech.instructure.com/api/v1/users/1893418";
+      console.log(url);
+      let res = await axios.get(url, this.config);
+      console.log(res);
+
+    },
+    data: function() {
+      return {
+        token: "14~v0QBoAwmlSCkv13a6h5CPB8ujV8FPjsBiFh6RNUCKRG06PyJw04tjZ6gzhmuuhZ9",
+        config: {
+          headers: {
+            crossdomain: true,
+          },
+          params: {
+            access_token: this.token
+          }
+        },
+        test: "HELLO!",
+      }
+    }
+  })
+</script>
+</body>
+</html>
